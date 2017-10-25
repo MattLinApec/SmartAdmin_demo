@@ -140,3 +140,6 @@
 //= require plugin/moment/moment
 //= require plugin/chartjs/chart
 //= require plugin/fullcalendar/jquery.fullcalendar
+
+// eChart
+//= require echart/echarts.min

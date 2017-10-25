@@ -1,0 +1,7 @@
+{:uriI"ˆfile://app/assets/javascripts/plugin/flot/readme.txt?type=text/plain&id=d892d8bd2893d8de1cf4ade647fa8a33024b73ca6137f6088610a3d24bb55f54:ET:load_pathI"app/assets/javascripts;T:filenameI"2app/assets/javascripts/plugin/flot/readme.txt;T:	nameI"plugin/flot/readme;T:logical_pathI"plugin/flot/readme.txt;T:content_typeI"text/plain;T:sourceI"—What did we customize in the flot.cust.js?
+
+We have hardcoded the themecolors as default; however they are still changable through flot init() options.;T:metadata{	:dependencieso:Set:
+@hash}
+I"environment-version;TTI"environment-paths;TTI"rails-env;TTI"4processors:type=text/plain&file_type=text/plain;TTI"@file-digest://app/assets/javascripts/plugin/flot/readme.txt;TTF:charsetI"
+utf-8;F:digest"%_W@<éqk45H†ýäâÕ‹‘žŸæ‹â¬a{~‰ÖLÂ:lengthi—:dependencies_digest"%û´2‹ZßŽïZÁà“bÛ\Ézîß!{ŒÌÓÜ:idI"Ed892d8bd2893d8de1cf4ade647fa8a33024b73ca6137f6088610a3d24bb55f54;F:
+mtimel+ëGßY

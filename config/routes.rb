@@ -6,6 +6,10 @@ Rails.application.routes.draw do
       to: 'dashboard#social',
       as: :dashboard_social
 
+  get 'dashboards/get_chart_data',
+      to: 'dashboard#get_chart_data',
+      as: :dashboard_get_chart_data
+
   # Smartadmin intel
   get 'smartadmin_intel/app_layouts',
       to: 'smartadmin_intel#app_layouts',
@@ -183,6 +187,7 @@ Rails.application.routes.draw do
 
   # Misc methods
   get '/home/set_locale', to: 'home#set_locale', as: :home_set_locale
+
 
   # CK editor
   mount Ckeditor::Engine => '/ckeditor'
