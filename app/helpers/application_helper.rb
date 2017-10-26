@@ -1,7 +1,7 @@
 # :nodoc:
 module ApplicationHelper
   def left_menu
-    left_menu_entries(left_menu_content)
+    left_menu_entries(left_menu_content_kpi)
   end
 
   private
@@ -123,6 +123,7 @@ module ApplicationHelper
     end
     output.html_safe
   end
+
 
   def left_menu_content
     [
@@ -508,6 +509,106 @@ module ApplicationHelper
           },
         ]
       },
+    ]
+  end
+
+  #added by matt 2017/10/25
+  def left_menu_content_kpi
+    [
+      {
+        href: '#',
+        title: _('Dashboard'),
+        content: "<i class='fa fa-lg fa-fw fa-home'></i> <span class='menu-item-parent'>" + _('Dashboard') + "</span>",
+        children: [
+          {
+            href: root_path,
+            title: _('Dashboard'),
+            content: "<span class='menu-item-parent'>" + _('Analytics Dashboard') + "</span>"
+          },
+          {
+            href: dashboard_social_path,
+            title: _('Dashboard'),
+            content: "<span class='menu-item-parent'>" + _('Social Wall') + "</span>"
+          },
+        ]
+      },
+      {
+        href: '#',
+        content: "<i class='fa fa-lg fa-fw fa-cube txt-color-blue'></i> <span class='menu-item-parent'>" + _('SmartAdmin Intel') + "</span>",
+        children: [
+          {
+            href: smartadmin_intel_app_layouts_path,
+            title: _('Dashboard'),
+            content: "<i class='fa fa-lg fa-fw fa-gear'></i> <span class='menu-item-parent'>" + _('App Layouts') + "</span>"
+          },
+          {
+            href: smartadmin_intel_prebuilt_skins_path,
+            title: _('Dashboard'),
+            content: "<i class='fa fa-lg fa-fw fa-picture-o'></i> <span class='menu-item-parent'>" + _('Prebuilt Skins') + "</span>"
+          },
+          {
+            href: smartadmin_intel_app_settings_path,
+            title: _('Dashboard'),
+            content: "<i class='fa fa-cube'></i> " + _('App Settings') + ""
+          },
+        ]
+      },
+      {
+        href: outlook_inbox_path,
+        content: "<i class='fa fa-lg fa-fw fa-inbox'></i> <span class='menu-item-parent'>" + _('Outlook') + "</span> <span class='badge pull-right inbox-badge margin-right-13'>14</span>",
+      },
+      {
+        href: '#',
+        content: "<i class='fa fa-lg fa-fw fa-bar-chart-o'></i> <span class='menu-item-parent'>" + _('Graphs') + "</span>",
+        children: [
+          {
+            href: graphs_flot_chart_path,
+            content: _('Flot Chart')
+          },
+          {
+            href: graphs_morris_charts_path,
+            content: _('Morris Charts')
+          },
+          {
+            href: graphs_sparklines_path,
+            content: _('Sparklines')
+          },
+          {
+            href: graphs_easy_pie_charts_path,
+            content: _('EasyPieCharts')
+          },
+          {
+            href: graphs_dygraphs_path,
+            content: _('Dygraphs')
+          },
+          {
+            href: graphs_chart_js_path,
+            content: _('Chart.js')
+          },
+          {
+            href: graphs_highchart_table_path,
+            content: "" + _('HighchartTable') + " <span class='badge pull-right inbox-badge bg-color-yellow'>" + _('new') + "</span>"
+          },
+        ]
+      },
+      {
+        href: '#',
+        content: "<i class='fa fa-lg fa-fw fa-table'></i> <span class='menu-item-parent'>" + _('Tables') + "</span>",
+        children: [
+          {
+            href: tables_normal_tables_path,
+            content: _('Normal Tables')
+          },
+          {
+            href: tables_data_tables_path,
+            content: "" + _('Data Tables') + " <span class='badge inbox-badge bg-color-greenLight hidden-mobile'>" + _('responsive') + "</span>"
+          },
+          {
+            href: tables_jquery_grid_path,
+            content: _('Jquery Grid')
+          },
+        ]
+      }
     ]
   end
 
