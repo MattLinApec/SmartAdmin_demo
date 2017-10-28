@@ -1,0 +1,82 @@
+<% content_for :ribbon do %>
+    <!-- RIBBON -->
+    <div id="ribbon">
+        <span class="ribbon-button-alignment">
+          <span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh"  rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+            <i class="fa fa-refresh"></i>
+          </span>
+        </span>
+        <!-- breadcrumb -->
+        <ol class="breadcrumb">
+            <li>采购指标</li>
+            <li>外协加工符期率</li>
+        </ol>
+        <!-- end breadcrumb -->
+        <!-- You can also add more buttons to the
+  ribbon for further usability
+
+  Example below:
+
+  <span class="ribbon-button-alignment pull-right">
+  <span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa-grid"></i> Change Grid</span>
+  <span id="add" class="btn btn-ribbon hidden-xs" data-title="add"><i class="fa-plus"></i> Add</span>
+  <span id="search" class="btn btn-ribbon" data-title="search"><i class="fa-search"></i> <span class="hidden-mobile">Search</span></span>
+  </span> -->
+    </div>
+    <!-- END RIBBON -->
+    <% end %>
+        <!-- MAIN CONTENT -->
+        <div id="content">
+            <div class="row">
+                <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+                    <h1 class="page-title txt-color-blueDark"><i class="fa-fw fa fa-home"></i> 采购指标 <span>> 外协加工符期率</span></h1>
+                </div>
+            </div>
+            <!-- widget grid -->
+            <section id="widget-grid" class="">
+                <!-- row -->
+                <div class="row">
+                    <article class="col-sm-12 col-md-12 col-lg-12">
+                        <!-- new widget -->
+                        <div class="jarviswidget jarviswidget-color-blue" id="jar-sales-billing" data-widget-editbutton="false" data-widget-colorbutton="false">
+                            <header>
+                                <span class="widget-icon"> <i class="glyphicon glyphicon-stats txt-color-white"></i> </span>
+                                <h2>外协加工符期率</h2>
+                                <!-- <div class="widget-toolbar">add: non-hidden - to disable auto hide</div>-->
+                            </header>
+                            <!-- widget div-->
+                            <div>
+                                <!-- widget edit box -->
+                                <div class="jarviswidget-editbox">
+                                    <div>
+                                        <label>Title:</label>
+                                        <input type="text" />
+                                    </div>
+                                </div>
+                                <!-- end widget edit box -->
+                                <div class="widget-body no-padding smart-form">
+                                    <!-- content goes here -->
+                                    <%= render 'echart_pro_outsourcing_ratio' %>
+                                        <!-- end content -->
+                                </div>
+                            </div>
+                            <!-- end widget div -->
+                        </div>
+                        <!-- end widget -->
+                    </article>
+                </div>
+                <!-- end row -->
+            </section>
+            <!-- end widget grid -->
+        </div>
+        <!-- END MAIN CONTENT -->
+        <% content_for :scripts do %>
+            <script>
+            $(document).ready(function() {
+                // DO NOT REMOVE : GLOBAL FUNCTIONS!
+                pageSetUp();
+
+
+            });
+            </script>
+            <% end %>

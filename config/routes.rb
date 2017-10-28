@@ -19,43 +19,79 @@ Rails.application.routes.draw do
       to: 'prod#order_demand_ratio',
       as: :prod_order_demand_ratio
 
+  get 'prod/get_echart_data_order_demand_ratio',
+    to: 'prod#get_echart_data_order_demand_ratio',
+    as: :prod_get_echart_data_order_demand_ratio
+
   get 'prod/order_delay',
     to: 'prod#order_delay',
     as: :prod_order_delay
 
+  get 'prod/get_echart_data_order_delay_ratio',
+    to: 'prod#get_echart_data_order_delay_ratio',
+    as: :prod_get_echart_data_order_delay_ratio
+
   #-- mfg (Manufacture) --
-  get 'mfg/plan_ratio',
-    to: 'mfg#plan_ratio',
-    as: :mfg_plan_ratio
+  get 'mfg/plan_completed_ratio',
+    to: 'mfg#plan_completed_ratio',
+    as: :mfg_plan_completed_ratio
+
+  get 'mfg/get_echart_data_plan_completed_ratio',
+    to: 'mfg#get_echart_data_plan_completed_ratio',
+    as: :mfg_get_echart_data_plan_completed_ratio
 
   #-- pro (Purchase) --
   get 'pro/income_ratio',
     to: 'pro#income_ratio',
     as: :pro_income_ratio
 
+  get 'pro/get_echart_data_income_ratio',
+    to: 'pro#get_echart_data_income_ratio',
+    as: :pro_get_echart_data_income_ratio
+
   get 'pro/outsourcing_ratio',
     to: 'pro#outsourcing_ratio',
     as: :pro_outsourcing_ratio  
 
+  get 'pro/get_echart_data_outsourcing_ratio',
+    to: 'pro#get_echart_data_outsourcing_ratio',
+    as: :pro_get_echart_data_outsourcing_ratio
+
   #-- wh (Warehouse) --
-  get 'wh/details_compare',
-    to: 'wh#details_compare',
-    as: :wh_details_compare  
+  get 'wh/details_compare_ratio',
+    to: 'wh#details_compare_ratio',
+    as: :wh_details_compare_ratio  
+
+  get 'wh/get_echart_data_details_compare_ratio',
+    to: 'wh#get_echart_data_details_compare_ratio',
+    as: :wh_get_echart_data_details_compare_ratio
 
   #-- qc (Quality Control) --
   get 'qc/fg_ratio',
     to: 'qc#fg_ratio',
     as: :qc_fg_ratio  
 
+  get 'qc/get_echart_data_fg_ratio',
+    to: 'qc#get_echart_data_fg_ratio',
+    as: :qc_get_echart_data_fg_ratio    
+
   #-- fin (Finance) --
   get 'fin/expense_amount',
     to: 'fin#expense_amount',
     as: :fin_expense_amount  
 
+  get 'fin/get_echart_data_expense_amount',
+    to: 'fin#get_echart_data_expense_amount',
+    as: :fin_get_echart_data_expense_amount  
+
   #-- hr --
   get 'hr/hire_ratio',
     to: 'hr#hire_ratio',
-    as: :hr_hire_ratio  
+    as: :hr_hire_ratio 
+
+  get 'hr/get_echart_data_hire_ratio',
+    to: 'hr#get_echart_data_hire_ratio',
+    as: :hr_get_echart_data_hire_ratio   
 
   #---------------------------------------------------------
 

@@ -1,0 +1,79 @@
+<!--%= url_for(:controller=>:tables,:action=>:data_tables,:pa1=>'123',:pa2=>'456') %-->
+<!--%= url_for(controller: 'tables', action: 'data_tables', pa1: '123', pa2: '456') %-->
+<!--%= url_for(action: 'get_chart_data', pa1: '123入门示例', pa2: '456毛衫') %-->
+<div id="echart_qc_fg_ratio_ratio" style="min-width: 500px;min-height: 500px;margin: auto;object-fit: fill;">
+    echart 成品不合格率</div>
+<% content_for :scripts do %>
+    <script>
+    $(document).ready(function() {
+        load_echart();
+
+    });
+
+    function load_echart() {
+        // alert('load_echart');
+        $.ajax({
+            url: encodeURI("<%= url_for(controller: 'qc', action: 'get_echart_data_fg_ratio', pa1: '---成品不合格率---', pa2: '---(不合格总数/总检查数)×100%---') %>"),
+            type: "GET",
+            dataType: "json",
+            success: function(result) {
+                // alert(result);
+                //eChart
+                // 基于准备好的dom，初始化echarts实例
+                var myChart = echarts.init(document.getElementById('echart_qc_fg_ratio_ratio'));
+                // 指定图表的配置项和数据
+                var option = {
+                    baseOption: {
+                        title: {
+                            text: result.title
+                        },
+                        tooltip: {
+                            trigger: 'axis',
+                            axisPointer: {
+                                type: 'shadow', // 默认为可选为：'line' | 'shadow'
+                                label: {
+                                    show: true
+                                }
+                            }
+                        },
+                        toolbox: {
+                            show: true,
+                            feature: {
+                                mark: { show: true },
+                                dataView: { show: true, readOnly: false },
+                                magicType: { show: true, type: ['line', 'bar'] },
+                                restore: { show: true },
+                                saveAsImage: { show: true }
+                            }
+                        },
+                        legend: {
+                            data: ['不合格率']
+                        },
+                        xAxis: {
+                            data: result.x_month
+                        },
+                        yAxis: {
+                            name: '(%)'
+                        },
+                        series: [{
+                            name: '不合格率',
+                            type: 'bar',
+                            data: result.y_billing_data
+                        }]
+                    }
+                };
+                // 使用刚指定的配置项和数据显示图表。
+                myChart.setOption(option);
+
+                document.getElementById('echart_qc_fg_ratio_ratio').addEventListener("click", myFunction);
+
+            }
+        });
+    }
+
+    function myFunction() {
+        var myChart = echarts.init(document.getElementById('echart_qc_fg_ratio_ratio'));
+        myChart.resize();
+    }
+    </script>
+    <% end %>

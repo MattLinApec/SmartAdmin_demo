@@ -13,7 +13,7 @@
     function load_echart() {
         // alert('load_echart');
         $.ajax({
-            url: encodeURI("<%= url_for(action: 'get_echart_data_billing', pa1: '123实际营业金额456', pa2: '123每周实际达成金额456') %>"),
+            url: encodeURI("<%= url_for(controller: 'sales', action: 'get_echart_data_billing', pa1: '123实际营业金额456', pa2: '123每周实际达成金额456') %>"),
             type: "GET",
             dataType: "json",
             success: function(result) {
@@ -27,11 +27,29 @@
                         title: {
                             text: result.title
                         },
-                        tooltip: {},
+                        tooltip: {
+                            trigger: 'axis',
+                            axisPointer: {
+                                type: 'shadow', // 默认为可选为：'line' | 'shadow'
+                                label: {
+                                    show: true
+                                }
+                            }
+                        },
+                        toolbox: {
+                            show: true,
+                            feature: {
+                                mark: { show: true },
+                                dataView: { show: true, readOnly: false },
+                                magicType: { show: true, type: ['line', 'bar'] },
+                                restore: { show: true },
+                                saveAsImage: { show: true }
+                            }
+                        },
                         legend: {
                             data: ['营业金额']
                         },
-                        xAxis: {
+                        xAxis: {                            
                             data: result.x_month
                         },
                         yAxis: {

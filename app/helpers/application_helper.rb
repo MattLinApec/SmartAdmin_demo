@@ -548,7 +548,7 @@ module ApplicationHelper
         content: "<i class='fa fa-lg fa-fw fa fa-industry'></i> <span class='menu-item-parent'>" + _('制造指标') + "</span>",
         children: [
           {
-            href: mfg_plan_ratio_path,
+            href: mfg_plan_completed_ratio_path,
             title: _('生产计划完成率'),
             content: "<i class='fa fa-lg fa-fw fa-gear'></i> <span class='menu-item-parent'>" + _('生产计划完成率') + "</span>"
           },                   
@@ -574,7 +574,7 @@ module ApplicationHelper
         content: "<i class='fa fa-lg fa-fw fa fa-cubes'></i> <span class='menu-item-parent'>" + _('仓库指标') + "</span>",
         children: [
           {
-            href: wh_details_compare_path,
+            href: wh_details_compare_ratio_path,
             content: _('帐料相符率')
           },          
         ]
