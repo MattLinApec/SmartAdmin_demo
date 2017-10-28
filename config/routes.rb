@@ -1,7 +1,64 @@
 Rails.application.routes.draw do
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root 'dashboard#analytics'
+  #root 'dashboard#analytics'
+ 
+  #added by matt 2017-10-27
+  root 'sales#billing'
+  #-- sales --
+  get 'sales/billing',
+      to: 'sales#billing',
+      as: :sales_billing
+
+  get 'sales/get_echart_data_billing',
+    to: 'sales#get_echart_data_billing',
+    as: :sales_get_echart_data_billing
+
+  #-- prod (Production) -- 
+  get 'prod/order_demand_ratio',
+      to: 'prod#order_demand_ratio',
+      as: :prod_order_demand_ratio
+
+  get 'prod/order_delay',
+    to: 'prod#order_delay',
+    as: :prod_order_delay
+
+  #-- mfg (Manufacture) --
+  get 'mfg/plan_ratio',
+    to: 'mfg#plan_ratio',
+    as: :mfg_plan_ratio
+
+  #-- pro (Purchase) --
+  get 'pro/income_ratio',
+    to: 'pro#income_ratio',
+    as: :pro_income_ratio
+
+  get 'pro/outsourcing_ratio',
+    to: 'pro#outsourcing_ratio',
+    as: :pro_outsourcing_ratio  
+
+  #-- wh (Warehouse) --
+  get 'wh/details_compare',
+    to: 'wh#details_compare',
+    as: :wh_details_compare  
+
+  #-- qc (Quality Control) --
+  get 'qc/fg_ratio',
+    to: 'qc#fg_ratio',
+    as: :qc_fg_ratio  
+
+  #-- fin (Finance) --
+  get 'fin/expense_amount',
+    to: 'fin#expense_amount',
+    as: :fin_expense_amount  
+
+  #-- hr --
+  get 'hr/hire_ratio',
+    to: 'hr#hire_ratio',
+    as: :hr_hire_ratio  
+
+  #---------------------------------------------------------
+
   get 'dashboards/dashboard-social',
       to: 'dashboard#social',
       as: :dashboard_social

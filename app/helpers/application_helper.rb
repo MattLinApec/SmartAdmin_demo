@@ -517,96 +517,96 @@ module ApplicationHelper
     [
       {
         href: '#',
-        title: _('Dashboard'),
-        content: "<i class='fa fa-lg fa-fw fa-home'></i> <span class='menu-item-parent'>" + _('Dashboard') + "</span>",
+        title: _('业务订单指标'),
+        content: "<i class='fa fa-lg fa-fw fa fa-bar-chart'></i> <span class='menu-item-parent'>" + _('业务订单指标') + "</span>",
         children: [
           {
-            href: root_path,
-            title: _('Dashboard'),
-            content: "<span class='menu-item-parent'>" + _('Analytics Dashboard') + "</span>"
-          },
-          {
-            href: dashboard_social_path,
-            title: _('Dashboard'),
-            content: "<span class='menu-item-parent'>" + _('Social Wall') + "</span>"
+            href: sales_billing_path,
+            title: _('实际营业金额'),
+            content: "<span class='menu-item-parent'>" + _('实际营业金额') + "</span>"
           },
         ]
       },
       {
-        href: '#',
-        content: "<i class='fa fa-lg fa-fw fa-cube txt-color-blue'></i> <span class='menu-item-parent'>" + _('SmartAdmin Intel') + "</span>",
+        href: '#',        
+        content: "<i class='fa fa-lg fa-fw fa fa-cogs'></i> <span class='menu-item-parent'>" + _('生产指标') + "</span>",
         children: [
           {
-            href: smartadmin_intel_app_layouts_path,
-            title: _('Dashboard'),
-            content: "<i class='fa fa-lg fa-fw fa-gear'></i> <span class='menu-item-parent'>" + _('App Layouts') + "</span>"
+            href: prod_order_demand_ratio_path,
+            title: _('订单达交率'),
+            content: "<i class='fa fa-lg fa-fw fa-gear'></i> <span class='menu-item-parent'>" + _('订单达交率') + "</span>"
           },
           {
-            href: smartadmin_intel_prebuilt_skins_path,
-            title: _('Dashboard'),
-            content: "<i class='fa fa-lg fa-fw fa-picture-o'></i> <span class='menu-item-parent'>" + _('Prebuilt Skins') + "</span>"
-          },
-          {
-            href: smartadmin_intel_app_settings_path,
-            title: _('Dashboard'),
-            content: "<i class='fa fa-cube'></i> " + _('App Settings') + ""
-          },
+            href: prod_order_delay_path,
+            title: _('超期工单未结'),
+            content: "<i class='fa fa-lg fa-fw fa-picture-o'></i> <span class='menu-item-parent'>" + _('超期工单未结') + "</span>"
+          },          
         ]
       },
       {
-        href: outlook_inbox_path,
-        content: "<i class='fa fa-lg fa-fw fa-inbox'></i> <span class='menu-item-parent'>" + _('Outlook') + "</span> <span class='badge pull-right inbox-badge margin-right-13'>14</span>",
-      },
-      {
-        href: '#',
-        content: "<i class='fa fa-lg fa-fw fa-bar-chart-o'></i> <span class='menu-item-parent'>" + _('Graphs') + "</span>",
+        href: '#',        
+        content: "<i class='fa fa-lg fa-fw fa fa-industry'></i> <span class='menu-item-parent'>" + _('制造指标') + "</span>",
         children: [
           {
-            href: graphs_flot_chart_path,
-            content: _('Flot Chart')
+            href: mfg_plan_ratio_path,
+            title: _('生产计划完成率'),
+            content: "<i class='fa fa-lg fa-fw fa-gear'></i> <span class='menu-item-parent'>" + _('生产计划完成率') + "</span>"
+          },                   
+        ]
+      },{
+        href: '#',        
+        content: "<i class='fa fa-lg fa-fw fa fa-shopping-bag'></i> <span class='menu-item-parent'>" + _('采购指标') + "</span>",
+        children: [
+          {
+            href: pro_income_ratio_path,
+            title: _('进料合格率'),
+            content: "<i class='fa fa-lg fa-fw fa-gear'></i> <span class='menu-item-parent'>" + _('进料合格率') + "</span>"
           },
           {
-            href: graphs_morris_charts_path,
-            content: _('Morris Charts')
-          },
-          {
-            href: graphs_sparklines_path,
-            content: _('Sparklines')
-          },
-          {
-            href: graphs_easy_pie_charts_path,
-            content: _('EasyPieCharts')
-          },
-          {
-            href: graphs_dygraphs_path,
-            content: _('Dygraphs')
-          },
-          {
-            href: graphs_chart_js_path,
-            content: _('Chart.js')
-          },
-          {
-            href: graphs_highchart_table_path,
-            content: "" + _('HighchartTable') + " <span class='badge pull-right inbox-badge bg-color-yellow'>" + _('new') + "</span>"
-          },
+            href: pro_outsourcing_ratio_path,
+            title: _('外协加工符期率'),
+            content: "<i class='fa fa-lg fa-fw fa fa-wrench'></i> <span class='menu-item-parent'>" + _('外协加工符期率') + "</span>"
+          },          
         ]
       },
       {
         href: '#',
-        content: "<i class='fa fa-lg fa-fw fa-table'></i> <span class='menu-item-parent'>" + _('Tables') + "</span>",
+        content: "<i class='fa fa-lg fa-fw fa fa-cubes'></i> <span class='menu-item-parent'>" + _('仓库指标') + "</span>",
         children: [
           {
-            href: tables_normal_tables_path,
-            content: _('Normal Tables')
-          },
+            href: wh_details_compare_path,
+            content: _('帐料相符率')
+          },          
+        ]
+      },
+      {
+        href: '#',
+        content: "<i class='fa fa-lg fa-fw fa fa-copyright'></i> <span class='menu-item-parent'>" + _('品管指标') + "</span>",
+        children: [
           {
-            href: tables_data_tables_path,
-            content: "" + _('Data Tables') + " <span class='badge inbox-badge bg-color-greenLight hidden-mobile'>" + _('responsive') + "</span>"
-          },
+            href: qc_fg_ratio_path,
+            content: _('成品不合格率')
+          },          
+        ]
+      },
+      {
+        href: '#',
+        content: "<i class='fa fa-lg fa-fw fa fa-balance-scale'></i> <span class='menu-item-parent'>" + _('财务指标') + "</span>",
+        children: [
           {
-            href: tables_jquery_grid_path,
-            content: _('Jquery Grid')
-          },
+            href: fin_expense_amount_path,
+            content: _('实际费用金额')
+          },          
+        ]
+      },
+      {
+        href: '#',
+        content: "<i class='fa fa-lg fa-fw fa fa-users'></i> <span class='menu-item-parent'>" + _('人资指标') + "</span>",
+        children: [
+          {
+            href: hr_hire_ratio_path,
+            content: _('招聘及时率')
+          },          
         ]
       }
     ]

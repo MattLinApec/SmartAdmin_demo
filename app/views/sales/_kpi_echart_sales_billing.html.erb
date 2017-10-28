@@ -1,0 +1,61 @@
+<!--%= url_for(:controller=>:tables,:action=>:data_tables,:pa1=>'123',:pa2=>'456') %-->
+<!--%= url_for(controller: 'tables', action: 'data_tables', pa1: '123', pa2: '456') %-->
+<!--%= url_for(action: 'get_chart_data', pa1: '123入门示例', pa2: '456毛衫') %-->
+<div id="echart_sales_billing" style="min-width: 500px;min-height: 500px;margin: auto;object-fit: fill;">
+    echart 实际营业金额</div>
+<% content_for :scripts do %>
+    <script>
+    $(document).ready(function() {
+        load_echart();
+
+    });
+
+    function load_echart() {
+        // alert('load_echart');
+        $.ajax({
+            url: encodeURI("<%= url_for(action: 'get_echart_data_billing', pa1: '123实际营业金额456', pa2: '123每周实际达成金额456') %>"),
+            type: "GET",
+            dataType: "json",
+            success: function(result) {
+                // alert(result);
+                //eChart
+                // 基于准备好的dom，初始化echarts实例
+                var myChart = echarts.init(document.getElementById('echart_sales_billing'));
+                // 指定图表的配置项和数据
+                var option = {
+                    baseOption: {
+                        title: {
+                            text: result.title
+                        },
+                        tooltip: {},
+                        legend: {
+                            data: ['营业金额']
+                        },
+                        xAxis: {
+                            data: result.x_month
+                        },
+                        yAxis: {
+                            name: '金额(K)'
+                        },
+                        series: [{
+                            name: '营业金额',
+                            type: 'bar',
+                            data: result.y_billing_data
+                        }]
+                    }
+                };
+                // 使用刚指定的配置项和数据显示图表。
+                myChart.setOption(option);
+
+                document.getElementById('echart_sales_billing').addEventListener("click", myFunction);
+
+            }
+        });
+    }
+
+    function myFunction() {
+        var myChart = echarts.init(document.getElementById('echart_sales_billing'));
+        myChart.resize();
+    }
+    </script>
+    <% end %>

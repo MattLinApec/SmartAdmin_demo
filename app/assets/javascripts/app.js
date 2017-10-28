@@ -1409,6 +1409,7 @@ var calc_navbar_height = function() {
 				fullscreenClass : 'fa fa-expand | fa fa-compress',
 				fullscreenDiff : 3,
 				onFullscreen : function() {
+					
 				},
 				// custom btn
 				customButton : false,

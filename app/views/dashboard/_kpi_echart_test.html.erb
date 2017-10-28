@@ -1,7 +1,7 @@
 <!--%= url_for(:controller=>:tables,:action=>:data_tables,:pa1=>'123',:pa2=>'456') %-->
 <!--%= url_for(controller: 'tables', action: 'data_tables', pa1: '123', pa2: '456') %-->
 <!--%= url_for(action: 'get_chart_data', pa1: '123入门示例', pa2: '456毛衫') %-->
-<div id="test_2" style="max-width: 900px;min-height: 500px;margin: auto;">
+<div id="test_2" style="min-width: 500px;min-height: 500px;margin: auto;object-fit: fill;">
     aabbcc</div>
 <% content_for :scripts do %>
     <script>
@@ -44,8 +44,16 @@
                 };
                 // 使用刚指定的配置项和数据显示图表。
                 myChart.setOption(option);
+
+                document.getElementById('test_2').addEventListener("click", myFunction);
+                
             }
         });
+    }
+
+    function myFunction(){
+        var myChart = echarts.init(document.getElementById('test_2'));
+        myChart.resize();
     }
     </script>
     <% end %>
