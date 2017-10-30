@@ -6,74 +6,76 @@
 <% content_for :scripts do %>
     <script>
     $(document).ready(function() {
-        load_echart();
-
+        var my_div = document.getElementById('echart_fin_expense_amount');
+        // load_echart();
+        obj_echart_fin_expense_amount.load_echart(my_div);
+        // resize echart when window resize
+        $(window).resize(function() {
+            this.obj_echart_fin_expense_amount.self_resize(my_div);
+        });
     });
 
-    function load_echart() {
-        // alert('load_echart');
-        $.ajax({
-            url: encodeURI("<%= url_for(controller: 'fin',action: 'get_echart_data_expense_amount', pa1: '---实际费用金额---', pa2: '---年度与每月的实际花费金额---') %>"),
-            type: "GET",
-            dataType: "json",
-            success: function(result) {
-                // alert(result);
-                //eChart
-                // 基于准备好的dom，初始化echarts实例
-                var myChart = echarts.init(document.getElementById('echart_fin_expense_amount'));
-                // 指定图表的配置项和数据
-                var option = {
-                    baseOption: {
-                        title: {
-                            text: result.title
-                        },
-                        tooltip: {
-                            trigger: 'axis',
-                            axisPointer: {
-                                type: 'shadow', // 默认为可选为：'line' | 'shadow'
-                                label: {
-                                    show: true
+    var obj_echart_fin_expense_amount = {
+        load_echart: function(obj) {            
+            $.ajax({
+                url: encodeURI("<%= url_for(controller: 'fin',action: 'get_echart_data_expense_amount', pa1: '---实际费用金额---', pa2: '---年度与每月的实际花费金额---') %>"),
+                type: "GET",
+                dataType: "json",
+                success: function(result) {                    
+                    //eChart
+                    // 基于准备好的dom，初始化echarts实例
+                    var myChart = echarts.init(obj);
+                    // 指定图表的配置项和数据
+                    var option = {
+                        baseOption: {
+                            title: {
+                                text: result.title
+                            },
+                            tooltip: {
+                                trigger: 'axis',
+                                axisPointer: {
+                                    type: 'shadow', // 默认为可选为：'line' | 'shadow'
+                                    label: {
+                                        show: true
+                                    }
                                 }
-                            }
-                        },
-                        toolbox: {
-                            show: true,
-                            feature: {
-                                mark: { show: true },
-                                dataView: { show: true, readOnly: false },
-                                magicType: { show: true, type: ['line', 'bar'] },
-                                restore: { show: true },
-                                saveAsImage: { show: true }
-                            }
-                        },
-                        legend: {
-                            data: ['金额']
-                        },
-                        xAxis: {
-                            data: result.x_month
-                        },
-                        yAxis: {
-                            name: '金额 (K CNY)'
-                        },
-                        series: [{
-                            name: '金额',
-                            type: 'bar',
-                            data: result.y_billing_data
-                        }]
-                    }
-                };
-                // 使用刚指定的配置项和数据显示图表。
-                myChart.setOption(option);
+                            },
+                            toolbox: {
+                                show: true,
+                                feature: {
+                                    mark: { show: true },
+                                    dataView: { show: true, readOnly: false },
+                                    magicType: { show: true, type: ['line', 'bar'] },
+                                    restore: { show: true },
+                                    saveAsImage: { show: true }
+                                }
+                            },
+                            legend: {
+                                data: ['金额']
+                            },
+                            xAxis: {
+                                data: result.x_month
+                            },
+                            yAxis: {
+                                name: '金额 (K CNY)'
+                            },
+                            series: [{
+                                name: '金额',
+                                type: 'bar',
+                                data: result.y_billing_data
+                            }]
+                        }
+                    };
+                    // 使用刚指定的配置项和数据显示图表。
+                    myChart.setOption(option);
 
-                document.getElementById('echart_fin_expense_amount').addEventListener("click", myFunction);
-
-            }
-        });
-    }
-
-    function myFunction() {
-        var myChart = echarts.init(document.getElementById('echart_fin_expense_amount'));
-        myChart.resize();
+                }
+            });
+        },
+        self_resize: function(obj) {
+            var myChart = echarts.init(obj);
+            myChart.resize();
+        }
     }
     </script>
     <% end %>

@@ -6,74 +6,76 @@
 <% content_for :scripts do %>
     <script>
     $(document).ready(function() {
-        load_echart();
-
+        var my_div = document.getElementById('echart_pro_outsourcing_ratio');
+        // load_echart();
+        obj_echart_pro_outsourcing_ratio.load_echart(my_div);
+        // resize echart when window resize
+        $(window).resize(function() {
+            this.obj_echart_pro_outsourcing_ratio.self_resize(my_div);
+        });
     });
 
-    function load_echart() {
-        // alert('load_echart');
-        $.ajax({
-            url: encodeURI("<%= url_for(controller: 'pro', action: 'get_echart_data_outsourcing_ratio', pa1: '---外协加工符期率---', pa2: '---(准时到货批数/采购应到货总批数)×100%---') %>"),
-            type: "GET",
-            dataType: "json",
-            success: function(result) {
-                // alert(result);
-                //eChart
-                // 基于准备好的dom，初始化echarts实例
-                var myChart = echarts.init(document.getElementById('echart_pro_outsourcing_ratio'));
-                // 指定图表的配置项和数据
-                var option = {
-                    baseOption: {
-                        title: {
-                            text: result.title
-                        },
-                        tooltip: {
-                            trigger: 'axis',
-                            axisPointer: {
-                                type: 'shadow', // 默认为可选为：'line' | 'shadow'
-                                label: {
-                                    show: true
+    var obj_echart_pro_outsourcing_ratio = {
+        load_echart: function(obj) {            
+            $.ajax({
+                url: encodeURI("<%= url_for(controller: 'pro', action: 'get_echart_data_outsourcing_ratio', pa1: '---外协加工符期率---', pa2: '---(准时到货批数/采购应到货总批数)×100%---') %>"),
+                type: "GET",
+                dataType: "json",
+                success: function(result) {                    
+                    //eChart
+                    // 基于准备好的dom，初始化echarts实例
+                    var myChart = echarts.init(obj);
+                    // 指定图表的配置项和数据
+                    var option = {
+                        baseOption: {
+                            title: {
+                                text: result.title
+                            },
+                            tooltip: {
+                                trigger: 'axis',
+                                axisPointer: {
+                                    type: 'shadow', // 默认为可选为：'line' | 'shadow'
+                                    label: {
+                                        show: true
+                                    }
                                 }
-                            }
-                        },
-                        toolbox: {
-                            show: true,
-                            feature: {
-                                mark: { show: true },
-                                dataView: { show: true, readOnly: false },
-                                magicType: { show: true, type: ['line', 'bar'] },
-                                restore: { show: true },
-                                saveAsImage: { show: true }
-                            }
-                        },
-                        legend: {
-                            data: ['符期率']
-                        },
-                        xAxis: {
-                            data: result.x_month
-                        },
-                        yAxis: {
-                            name: '(%)'
-                        },
-                        series: [{
-                            name: '符期率',
-                            type: 'bar',
-                            data: result.y_billing_data
-                        }]
-                    }
-                };
-                // 使用刚指定的配置项和数据显示图表。
-                myChart.setOption(option);
+                            },
+                            toolbox: {
+                                show: true,
+                                feature: {
+                                    mark: { show: true },
+                                    dataView: { show: true, readOnly: false },
+                                    magicType: { show: true, type: ['line', 'bar'] },
+                                    restore: { show: true },
+                                    saveAsImage: { show: true }
+                                }
+                            },
+                            legend: {
+                                data: ['符期率']
+                            },
+                            xAxis: {
+                                data: result.x_month
+                            },
+                            yAxis: {
+                                name: '(%)'
+                            },
+                            series: [{
+                                name: '符期率',
+                                type: 'bar',
+                                data: result.y_billing_data
+                            }]
+                        }
+                    };
+                    // 使用刚指定的配置项和数据显示图表。
+                    myChart.setOption(option);
 
-                document.getElementById('echart_pro_outsourcing_ratio').addEventListener("click", myFunction);
-
-            }
-        });
-    }
-
-    function myFunction() {
-        var myChart = echarts.init(document.getElementById('echart_pro_outsourcing_ratio'));
-        myChart.resize();
+                }
+            });
+        },
+        self_resize: function(obj) {
+            var myChart = echarts.init(obj);
+            myChart.resize();
+        }
     }
     </script>
     <% end %>
